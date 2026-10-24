@@ -53,6 +53,9 @@ CLI/desktop probes live in `packages/artifact-tests`, outside the application pa
 verification: the coordinated macOS release pipeline signs Electrobun's expanded app archive and finalizes
 the DMG, and that intermediate archive is not a public download.
 
+On NixOS, see [the Nix development setup](nix/README.md#development) to install
+and patch the native build tools and terminal library.
+
 ## Repository layout
 
 [`architecture.md`](architecture.md) lists every app and package with its role and allowed dependencies;

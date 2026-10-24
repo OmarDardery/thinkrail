@@ -26,6 +26,14 @@ pipeline.
   publication before required signing and verification; checksums over pre-signing bytes; or a
   release-only application build path that bypasses normal package commands.
 
+## Nix validation
+
+`workflows/nix.yml` independently builds and checks the x86_64-linux source flake
+on pushes to main/the Nix branch, pull requests, and manual dispatch. It runs the
+installed package through the existing CLI artifact smoke, then checks its version.
+It owns no release publication and is not added to the existing CI aggregate gate.
+The packaging contract and manual NixOS checks live in `nix/SPEC.md` and `nix/README.md`.
+
 ## CI
 
 Workflow Bun setup reads the root `package.json` `packageManager` pin through `bun-version-file`.

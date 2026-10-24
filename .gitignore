@@ -44,3 +44,7 @@ playwright-report-desktop/
 
 # Astro's generated type cache
 .astro/
+
+# Local Nix build outputs
+/result
+/result-*

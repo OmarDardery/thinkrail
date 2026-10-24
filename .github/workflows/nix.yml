@@ -1,0 +1,27 @@
+name: Nix
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, feat/nix-support]
+    paths: ['flake.nix', 'flake.lock', 'nix/**', 'bun.lock', '**/package.json', 'patches/**', 'apps/**', 'packages/**', 'pi-extensions/**', 'thinkrail-extensions/**', '.github/workflows/nix.yml']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nix-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: nix flake check --print-build-logs
+      - run: nix build --print-build-logs
+      - run: ./result/bin/thinkrail --version

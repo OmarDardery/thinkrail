@@ -77,6 +77,18 @@ create the tools it needs based on how you actually work.
 ThinkRail ships in two additive forms: a native desktop installer and the self-contained `thinkrail` CLI.
 Both are published with `SHA256SUMS` on the [releases page](https://github.com/JetBrains/thinkrail/releases).
 
+### Nix / NixOS (fork)
+
+This fork includes a source-built flake for the browser launcher on x86_64 Linux:
+
+```bash
+nix run github:OmarDardery/thinkrail/feat/nix-support
+```
+
+NixOS validation is pending. See [Nix setup and testing](nix/README.md) for build
+checks, NixOS/Home Manager installation, and the development shell. The Electrobun
+desktop installer is not included in the flake.
+
 ### Desktop
 
 Download the `thinkrail-desktop-*` asset for your platform:
